@@ -15,12 +15,8 @@ module.exports = {
             return res.status(400).json({ error: 'Dev not exists' })
         }
 
-        // check if there a like already
-        if (targetDev.likes.includes(loggedDev._id)) {
-            console.log('match')
-        }
         // Save like at databank
-        loggedDev.likes.push(targetDev._id);
+        loggedDev.dislikes.push(targetDev._id);
         await loggedDev.save();
 
         return res.json({ ok: true });
