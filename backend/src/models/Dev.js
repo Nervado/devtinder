@@ -17,9 +17,13 @@ const DevSchema = new Schema({
     likes: [{
         type: Schema.Types.ObjectId,
         ref: 'Dev', // foreing key
+    }],
+    dislikes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Dev', // foreing key
     }]
 }, {
-    timestamps: true
-})
+        timestamps: true
+    })
 
 module.exports = model('Dev', DevSchema)

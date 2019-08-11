@@ -6,6 +6,7 @@ import Main from './pages/main'
 
 export default function Routes() {
     return (
+
         <BrowserRouter>
             <Route path="/" exact component={Login}></Route>
             <Route path="/main/:id" component={Main}></Route>

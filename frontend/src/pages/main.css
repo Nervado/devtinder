@@ -19,7 +19,7 @@
 }
 
 .main-container ul li img {
-    max-width: 100px;
+    max-width: 100%;
 }
 
 .main-container ul li footer {

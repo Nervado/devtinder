@@ -7,7 +7,7 @@ module.exports = {
         const { user } = req.headers;
         const loggedDev = await Dev.findById(user);
         const users = await Dev.find({
-            $end: [
+            $and: [
                 { _id: { $ne: user } },
                 { _id: { $nin: loggedDev.likes } },
                 { _id: { $nin: loggedDev.dislikes } }
@@ -20,7 +20,7 @@ module.exports = {
 
     async store(req, res) {
         const { username } = req.body
-            // axios whait
+        // axios whait
         const userExists = await Dev.findOne({ user: username })
         if (userExists) {
             return res.json(userExists)
