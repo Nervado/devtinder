@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import Login from './pages/Login';
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>helo Word</Text>
-      <Text style={styles.text}>helo Word</Text>
-    </View>
+    <Login />
   );
 }
+
+// por padrao o flex direction e roll
 
 const styles = StyleSheet.create({
   container: {
