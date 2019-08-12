@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Platform, KeyboardAvoidingView, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
 
+
+import api from '../services/api'
 import logo from '../assets/logo.png'
 
-export default function Login() {
+export default function Login({ navigation }) {
+
+    const { user, setUser } = useState('')
+
+    async function handleLogin() {
+        const response = await api.post('/devs', { username: user })
+        const { _id } = response.data
+        navigation.navigate('Main', { _id })
+    }
     return (
         <KeyboardAvoidingView style={styles.container}
             behavior="padding"
@@ -17,8 +27,10 @@ export default function Login() {
                 placeholder="Digite seu usario"
                 placeholderTextColor="#999"
                 style={styles.input}
+                value={user}
+                onChangeText={setUser}
             />
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={handleLogin} style={styles.button}>
                 <Text style={styles.buttonText}>Enviar</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
